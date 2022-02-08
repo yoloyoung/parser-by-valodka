@@ -1,5 +1,4 @@
-from bs4 import BeautifulSoup
-import requests
+from main import *
 array = [
 'btc',
 'eth',
@@ -20,9 +19,11 @@ array = [
 'atom',
 'link'
 ]
+#Берём Url сайта
 url = 'https://www.binance.com/uk-UA/markets/coinInfo'
+#Забираем Названия Монет
 responsible = requests.get(url).text
 soup = BeautifulSoup(responsible, 'html.parser')
-name_of_coin = soup.find_all("div", class_="css-1wp9rgv")
-for item in name_of_coin:
+nameOfCoin = soup.find_all("div", class_="css-1wp9rgv")
+for item in nameOfCoin:
 	coins = print(item.text.lower())
